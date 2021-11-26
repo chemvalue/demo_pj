@@ -1,0 +1,22 @@
+{
+  "user": [
+    {
+
+      "name": "john",
+      "phone": "033336633",
+      "email": "john@gmail.com"
+    },
+    {
+
+      "name": "david",
+      "phone": "0311333311",
+      "email": "david@gmail.com"
+    },
+    {
+
+      "name": "mike",
+      "phone": "033396639",
+      "email": "mike@gmail.com"
+    }
+  ]
+}
