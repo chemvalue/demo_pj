@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../Demo Project/demo_pj">
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/android/app/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/android/app/src/main/kotlin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/build/app/generated/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/build/image_picker/generated/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/build/path_provider_android/generated/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Demo Project/demo_pj/build/shared_preferences_android/generated/source/buildConfig/debug" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/demo_pj/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/demo_pj/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/demo_pj/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Flutter Plugins" level="project" />
+  </component>
+</module>
