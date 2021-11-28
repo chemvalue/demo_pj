@@ -48,6 +48,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
           isExpanded: true,
           value: check ? value : null,
           onChanged: (int? newValue) {
+            // chua cap nhat duoc thong qua getx
             setState(() {
               value = newValue!;
               check = true;

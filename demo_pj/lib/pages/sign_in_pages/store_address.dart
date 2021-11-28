@@ -37,6 +37,7 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
       maxHeight: 1800,
     );
     if (pickedFile != null) {
+      // chua cap nhat duoc thong qua getx
       setState(() {
         imageFile = File(pickedFile.path);
       });
@@ -50,6 +51,7 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
       maxHeight: 1800,
     );
     if (pickedFile != null) {
+      // chua cap nhat duoc thong qua getx
       setState(() {
         imageFile = File(pickedFile.path);
       });
