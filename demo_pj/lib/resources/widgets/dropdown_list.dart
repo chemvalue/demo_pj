@@ -1,3 +1,4 @@
+import 'package:demo_pj/constant.dart';
 import 'package:demo_pj/models/temp_model.dart';
 import 'package:flutter/material.dart';
 import '../utilities.dart';
@@ -37,7 +38,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
+      height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         color: getColorFromHex(widget.color).withOpacity(0.5),
@@ -67,7 +68,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
           hint: widget.hasIcon
               ? Row(
                   children: [
-                    const Icon(Icons.store),
+                    Icon(Icons.store, color: getColorFromHex(cPRIMARY_BUTTON_COLOR),),
                     const SizedBox(
                       width: 5,
                     ),

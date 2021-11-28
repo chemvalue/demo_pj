@@ -8,7 +8,7 @@ Widget inputWidget(
     required Function(String) onChange,
     Icon? icon}) {
   return SizedBox(
-    height: 45,
+    height: 40,
     child: TextField(
       onChanged: onChange,
       keyboardType: isPhone ? TextInputType.number : TextInputType.text,
@@ -17,7 +17,7 @@ Widget inputWidget(
         filled: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(18),
             borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
         prefixIcon: icon,
         hintText: hint,

@@ -112,10 +112,10 @@ class StoreAddressController extends GetxController {
     return null;
   }
 
-  List<TempModel>? distributorList(int cityId, int districtId, int townId) {
-    if (0 != cityId && 0 != districtId && 0 != townId) {
-      return distributors;
-    }
-    return null;
+  List<TempModel> distributorList(int cityId, int districtId, int townId) {
+    // if (0 != cityId && 0 != districtId && 0 != townId) {
+    //   return distributors;
+    // }
+    return distributors;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:demo_pj/controller/store_identify_controller.dart';
+import 'package:demo_pj/resources/utilities.dart';
 import 'package:demo_pj/resources/widgets/button.dart';
 import 'package:demo_pj/resources/widgets/input_field.dart';
 import 'package:flutter/material.dart';
@@ -59,9 +60,10 @@ class StoreIdentifyPage extends StatelessWidget {
                         onChange: (String value) {
                           nameStore = value;
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.store,
                           size: 20,
+                          color: getColorFromHex(cPRIMARY_BUTTON_COLOR),
                         ),
                         color: cINPUTFIELD_COLOR),
                     SizedBox(
@@ -73,9 +75,10 @@ class StoreIdentifyPage extends StatelessWidget {
                         onChange: (String value) {
                           phoneNumber = value;
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.call,
                           size: 20,
+                          color: getColorFromHex(cPRIMARY_BUTTON_COLOR),
                         ),
                         color: cINPUTFIELD_COLOR),
                     SizedBox(

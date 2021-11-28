@@ -1,5 +1,6 @@
 import 'package:demo_pj/constant.dart';
 import 'package:demo_pj/controller/login_controller.dart';
+import 'package:demo_pj/resources/utilities.dart';
 import 'package:demo_pj/resources/widgets/button.dart';
 import 'package:demo_pj/resources/widgets/input_field.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
                         hint: 'Nhập số điện thoại',
                         isPhone: true,
                         color: cINPUTFIELD_COLOR,
-                        icon: const Icon(Icons.call, size: 20,),
+                        icon: Icon(Icons.call, size: 20, color: getColorFromHex(cPRIMARY_BUTTON_COLOR),),
                         onChange: (String value) {
                           phoneNumber = value;
                         }),
