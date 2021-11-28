@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:demo_pj/controller/store_address_controller.dart';
+import 'package:demo_pj/controller/store.address.controller.dart';
 import 'package:demo_pj/resources/utilities.dart';
 import 'package:demo_pj/resources/widgets/button.dart';
 import 'package:demo_pj/resources/widgets/checkbox.dart';
-import 'package:demo_pj/resources/widgets/dropdown_list.dart';
-import 'package:demo_pj/resources/widgets/input_field.dart';
+import 'package:demo_pj/resources/widgets/dropdown.list.dart';
+import 'package:demo_pj/resources/widgets/input.field.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,9 +26,8 @@ class SignInStoreAddressPage extends StatefulWidget {
 
 class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
   final addressController = Get.put(StoreAddressController());
-  var city, district, town, distributor;
+  var city = '', district = '', town = '', distributor = '';
   File? imageFile;
-
 
   _getFromGallery() async {
     XFile? pickedFile = await ImagePicker().pickImage(
@@ -129,7 +128,6 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
       }
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -408,11 +406,29 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
                           height: 5,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomCheckbox(
                               valueReturn: _handleCheckValue,
                             ),
-                            Text('Tôi đồng ý với các điều khoản dịch vụ'),
+                            const Expanded(
+                              child: Text.rich(
+                                TextSpan(children: [
+                                  TextSpan(
+                                      text: 'Tôi đồng ý với các ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.grey)),
+                                  TextSpan(
+                                      text: 'điều khoản dịch vụ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.blue)),
+                                ]),
+                              ),
+                            )
                           ],
                         ),
                         customButton(

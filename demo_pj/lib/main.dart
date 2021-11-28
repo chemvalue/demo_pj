@@ -1,6 +1,4 @@
-import 'package:demo_pj/pages/login_page.dart';
-import 'package:demo_pj/pages/otp_page.dart';
-import 'package:demo_pj/pages/sign_in_pages/sign_in_page.dart';
+import 'package:demo_pj/pages/login.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

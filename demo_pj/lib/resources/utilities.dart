@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:core';
-import 'package:demo_pj/models/store_model.dart';
+import 'package:demo_pj/models/store.model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constant.dart';
 
 bool phoneCheck(String phone) {
+  print(RegExp(cPHONE_VALIDATE).hasMatch(phone));
   return RegExp(cPHONE_VALIDATE).hasMatch(phone);
 }
 

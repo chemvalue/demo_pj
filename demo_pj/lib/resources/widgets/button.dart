@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constant.dart';
 import '../utilities.dart';
 
@@ -9,7 +8,7 @@ Widget customButton(
     Function()? function,
     bool check = true}) {
   return GestureDetector(
-    onTap: function,
+    onTap: check ? function : null,
     child: Container(
       alignment: Alignment.center,
       width: double.infinity,

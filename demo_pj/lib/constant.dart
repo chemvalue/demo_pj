@@ -1,9 +1,9 @@
-import 'package:demo_pj/models/temp_model.dart';
+import 'package:demo_pj/models/temp.model.dart';
 
 const String cOTP = '123456';
 const String cEMAIL_VALIDATE =
     r"(^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$)";
-const String cPHONE_VALIDATE = r'(^(?:[+0][0-9])?[0-9]{10}$)';
+const String cPHONE_VALIDATE = r'(^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$)';
 
 const String cPRIMARY_BUTTON_COLOR = '#7E141C';
 const String cTEXT_COLOR = '#323239';

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:demo_pj/constant.dart';
 import 'package:demo_pj/resources/utilities.dart';
 import 'package:demo_pj/resources/widgets/button.dart';
-import 'package:demo_pj/resources/widgets/input_field.dart';
+import 'package:demo_pj/resources/widgets/input.field.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

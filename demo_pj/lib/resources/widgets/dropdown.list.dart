@@ -1,5 +1,5 @@
 import 'package:demo_pj/constant.dart';
-import 'package:demo_pj/models/temp_model.dart';
+import 'package:demo_pj/models/temp.model.dart';
 import 'package:flutter/material.dart';
 import '../utilities.dart';
 

@@ -1,4 +1,4 @@
-import 'package:demo_pj/models/store_model.dart';
+import 'package:demo_pj/models/store.model.dart';
 import 'package:get/get.dart';
 
 class UserController{

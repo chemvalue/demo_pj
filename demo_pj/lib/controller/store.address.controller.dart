@@ -1,6 +1,6 @@
 import 'package:demo_pj/constant.dart';
-import 'package:demo_pj/models/temp_model.dart';
-import 'package:demo_pj/models/store_model.dart';
+import 'package:demo_pj/models/temp.model.dart';
+import 'package:demo_pj/models/store.model.dart';
 import 'package:demo_pj/resources/utilities.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -78,8 +78,35 @@ class StoreAddressController extends GetxController {
         ),
       );
     } else {
-      print('err');
+      if(0 == cityId.value) {
+        showSnackbar(message: 'Mời chọn tỉnh / thành phố!');
+        return;
+      }
+      if(0 == districtId.value) {
+        showSnackbar(message: 'Mời chọn quận / huyện!');
+        return;
+      }
+      if(0 == townId.value) {
+        showSnackbar(message: 'Mời chọn phường / xã!');
+        return;
+      }
+      if('' == address.value.trim()) {
+        showSnackbar(message: 'Mời nhập địa chỉ cụ thể!');
+        return;
+      }
+      if(0 == distributorId.value) {
+        showSnackbar(message: 'Mời chọn nhà phân phối!');
+        return;
+      }
+      if(!check.value) {
+        showSnackbar(message: 'Chưa đồng ý điều khoản dịch vụ');
+        return;
+      }
     }
+  }
+
+  void showSnackbar({required String message}){
+    Get.snackbar('Lỗi', message);
   }
 
   List<TempModel>? districtList(int cityId) {

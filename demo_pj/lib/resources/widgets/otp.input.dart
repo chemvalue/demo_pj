@@ -1,5 +1,6 @@
 import 'package:demo_pj/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../utilities.dart';
 
@@ -16,8 +17,13 @@ class OtpInput extends StatelessWidget {
       height: 45,
       child: TextField(
         onChanged: onChange,
+        // maxLength: 6,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(6),
+        ],
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
+          // counter: const SizedBox.shrink(),
           fillColor: isTrue
               ? getColorFromHex(cINPUTFIELD_COLOR).withOpacity(0.5)
               : Colors.pinkAccent.withOpacity(0.2),
