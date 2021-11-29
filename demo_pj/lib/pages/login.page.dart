@@ -53,7 +53,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập số điện thoại',
                         isPhone: true,
                         color: cINPUTFIELD_COLOR,
@@ -68,7 +68,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    customButton(
+                    CustomButton(
                       color: cPRIMARY_BUTTON_COLOR,
                       text: 'Đăng nhập',
                       function: () => login.loginTap(phoneNumber),

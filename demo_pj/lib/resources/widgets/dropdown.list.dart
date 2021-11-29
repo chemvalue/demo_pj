@@ -1,39 +1,27 @@
 import 'package:demo_pj/constant.dart';
+import 'package:demo_pj/controller/dropdown.controller.dart';
 import 'package:demo_pj/models/temp.model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../utilities.dart';
 
-class CustomDropdownButton extends StatefulWidget {
-  const CustomDropdownButton({
-    Key? key,
-    required this.color,
-    required this.hint,
-    required this.hasIcon,
-    required this.items,
-    required this.valueReturn,
-  }) : super(key: key);
-
+class CustomDropdownButton extends StatelessWidget {
   final String color;
   final String hint;
   final bool hasIcon;
   final List<TempModel>? items;
-
   final Function(int) valueReturn;
 
-  @override
-  _CustomDropdownButtonState createState() => _CustomDropdownButtonState();
-}
+  final dropdownController = Get.put(DropdownController());
 
-class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  late int value;
-  bool check = false;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    value = 1;
-  }
+  CustomDropdownButton(
+      {Key? key,
+      required this.color,
+      required this.hint,
+      required this.hasIcon,
+      this.items,
+      required this.valueReturn})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,43 +29,42 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: getColorFromHex(widget.color).withOpacity(0.5),
+        color: getColorFromHex(color).withOpacity(0.5),
         borderRadius: BorderRadius.circular(25),
       ),
-      child: DropdownButtonHideUnderline(
+      child: Obx(() => DropdownButtonHideUnderline(
         child: DropdownButton(
           isExpanded: true,
-          value: check ? value : null,
+          value: dropdownController.check.value ? dropdownController.selected.value : null,
           onChanged: (int? newValue) {
-            // chua cap nhat duoc thong qua getx
-            setState(() {
-              value = newValue!;
-              check = true;
-              widget.valueReturn(newValue);
-            }
-            );
+            dropdownController.setSelected(newValue!);
+            dropdownController.check.value = true;
+            valueReturn(newValue);
           },
-          items: widget.items == null
+          items: items == null
               ? null
-              : widget.items!.map((TempModel item) {
-                  return DropdownMenuItem<int>(
-                    value: item.id,
-                    child: Text(item.name),
-                  );
-                }).toList(),
-          hint: widget.hasIcon
+              : items!.map((TempModel item) {
+            return DropdownMenuItem<int>(
+              value: item.id,
+              child: Text(item.name),
+            );
+          }).toList(),
+          hint: hasIcon
               ? Row(
-                  children: [
-                    Icon(Icons.store, color: getColorFromHex(cPRIMARY_BUTTON_COLOR),),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(widget.hint),
-                  ],
-                )
-              : Text(widget.hint),
+            children: [
+              Icon(
+                Icons.store,
+                color: getColorFromHex(cPRIMARY_BUTTON_COLOR),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(hint),
+            ],
+          )
+              : Text(hint),
         ),
-      ),
+      )),
     );
   }
 }

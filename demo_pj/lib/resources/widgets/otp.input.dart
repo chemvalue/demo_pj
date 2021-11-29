@@ -29,16 +29,25 @@ class OtpInput extends StatelessWidget {
               : Colors.pinkAccent.withOpacity(0.2),
           filled: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
-              borderSide: isTrue
-                  ? const BorderSide(width: 0, style: BorderStyle.none)
-                  : const BorderSide(
-                      width: 1, style: BorderStyle.solid, color: Colors.red)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25),
+            borderSide: isTrue
+                ? const BorderSide(width: 0, style: BorderStyle.none)
+                : const BorderSide(
+                    width: 1.5, style: BorderStyle.solid, color: Colors.red),          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25),
+            borderSide: isTrue
+                ? const BorderSide(width: 0, style: BorderStyle.none)
+                : const BorderSide(
+                    width: 1.5, style: BorderStyle.solid, color: Colors.red),
+          ),
           suffixIcon: isTrue
-              ? null : const Icon(
-                  Icons.alarm,
+              ? null
+              : const Icon(
+                  Icons.warning,
                   size: 20,
+                  color: Colors.red,
                 ),
           hintText: isTrue ? 'Nhập OTP xác nhận' : 'Input',
         ),

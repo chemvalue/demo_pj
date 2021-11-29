@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 
 class DropdownController extends GetxController{
-  var value = 1.obs;
+  final selected = 1.obs;
+  var check = false.obs;
+
+  void setSelected(int value){
+    selected.value = value;
+  }
 }

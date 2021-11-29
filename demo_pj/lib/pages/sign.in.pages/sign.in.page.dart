@@ -102,34 +102,34 @@ class _SignInState extends State<SignIn> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập tên',
                         isPhone: false,
-                        onChange: (String value){},
+                        onChange: (String value) {},
                         color: cINPUTFIELD_COLOR),
                     SizedBox(
                       height: 20.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập số điện thoại',
                         isPhone: true,
-                        onChange: (String value){},
+                        onChange: (String value) {},
                         color: cINPUTFIELD_COLOR),
                     SizedBox(
                       height: 20.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập email',
                         isPhone: false,
-                        onChange: (String value){},
+                        onChange: (String value) {},
                         color: cINPUTFIELD_COLOR),
                     SizedBox(
                       height: 20.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập số CCCD/CMND',
                         isPhone: false,
-                        onChange: (String value){},
+                        onChange: (String value) {},
                         color: cINPUTFIELD_COLOR),
                     SizedBox(
                       height: 20.h,
@@ -306,75 +306,78 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(
                       height: 10,
                     ),
-                    customButton(color: cPRIMARY_BUTTON_COLOR, text:  'Tiếp tục',function:  () async {
-                      Get.defaultDialog(
-                        contentPadding: const EdgeInsets.only(
-                            top: 10, bottom: 20, left: 20, right: 20),
-                        titlePadding: const EdgeInsets.only(top: 20),
-                        title: 'Đăng ký thành công',
-                        titleStyle: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500),
-                        content: Container(
-                          margin: const EdgeInsets.only(bottom: 20),
-                          child: const Text(
-                            'Chúc mừng bạn đã đăng ký thành công. \nVui lòng quay lại màn hình đăng nhập',
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        confirm: GestureDetector(
-                          onTap: () {
-                            Get.back();
-                            Get.back();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: 150.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: getColorFromHex(cPRIMARY_BUTTON_COLOR),
+                    CustomButton(
+                        color: cPRIMARY_BUTTON_COLOR,
+                        text: 'Tiếp tục',
+                        function: () async {
+                          Get.defaultDialog(
+                            contentPadding: const EdgeInsets.only(
+                                top: 10, bottom: 20, left: 20, right: 20),
+                            titlePadding: const EdgeInsets.only(top: 20),
+                            title: 'Đăng ký thành công',
+                            titleStyle: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500),
+                            content: Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              child: const Text(
+                                'Chúc mừng bạn đã đăng ký thành công. \nVui lòng quay lại màn hình đăng nhập',
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                            child: const Text(
-                              'Trở lại đăng nhập',
-                              style: TextStyle(color: Colors.white),
+                            confirm: GestureDetector(
+                              onTap: () {
+                                Get.back();
+                                Get.back();
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: 150.w,
+                                height: 40.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: getColorFromHex(cPRIMARY_BUTTON_COLOR),
+                                ),
+                                child: const Text(
+                                  'Trở lại đăng nhập',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                      // if (nameController.text.isNotEmpty &&
-                      //     phoneCheck(phoneController.text) &&
-                      //     emailCheck(emailController.text)) {
-                      //   await updateUserList(UserModel(
-                      //       name: nameController.text,
-                      //       phone: phoneController.text,
-                      //       email: emailController.text));
-                      //   // readJson();
-                      //
-                      //   Get.defaultDialog(
-                      //     title: 'Đăng ký thành công',
-                      //     titleStyle: const TextStyle(
-                      //         fontSize: 15, fontWeight: FontWeight.w500),
-                      //     middleText:
-                      //         'Chúc mừng bạn đã đăng ký thành công. \nVui lòng quay lại màn hình đăng nhập',
-                      //     confirm: GestureDetector(
-                      //       onTap: () {
-                      //         Get.back();
-                      //         Get.back();
-                      //       },
-                      //       child: Container(
-                      //         alignment: Alignment.center,
-                      //         width: 150.w,
-                      //         height: 40.h,
-                      //         decoration: BoxDecoration(
-                      //           borderRadius: BorderRadius.circular(20),
-                      //           color: Colors.red,
-                      //         ),
-                      //         child: Text('Trở lại đăng nhập'),
-                      //       ),
-                      //     ),
-                      //   );
-                      // }
-                    }),
+                          );
+                          // if (nameController.text.isNotEmpty &&
+                          //     phoneCheck(phoneController.text) &&
+                          //     emailCheck(emailController.text)) {
+                          //   await updateUserList(UserModel(
+                          //       name: nameController.text,
+                          //       phone: phoneController.text,
+                          //       email: emailController.text));
+                          //   // readJson();
+                          //
+                          //   Get.defaultDialog(
+                          //     title: 'Đăng ký thành công',
+                          //     titleStyle: const TextStyle(
+                          //         fontSize: 15, fontWeight: FontWeight.w500),
+                          //     middleText:
+                          //         'Chúc mừng bạn đã đăng ký thành công. \nVui lòng quay lại màn hình đăng nhập',
+                          //     confirm: GestureDetector(
+                          //       onTap: () {
+                          //         Get.back();
+                          //         Get.back();
+                          //       },
+                          //       child: Container(
+                          //         alignment: Alignment.center,
+                          //         width: 150.w,
+                          //         height: 40.h,
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(20),
+                          //           color: Colors.red,
+                          //         ),
+                          //         child: Text('Trở lại đăng nhập'),
+                          //       ),
+                          //     ),
+                          //   );
+                          // }
+                        }),
                   ],
                 ),
               ),

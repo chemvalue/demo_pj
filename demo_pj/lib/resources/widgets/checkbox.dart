@@ -1,19 +1,16 @@
 import 'package:demo_pj/controller/checkbox.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../constant.dart';
 import '../utilities.dart';
 
-class CustomCheckbox extends StatefulWidget {
-  const CustomCheckbox({Key? key, required this.valueReturn}) : super(key: key);
-  final Function(bool) valueReturn;
-  @override
-  _CustomCheckboxState createState() => _CustomCheckboxState();
-}
+class CustomCheckbox extends StatelessWidget {
 
-class _CustomCheckboxState extends State<CustomCheckbox> {
+  final Function(bool) valueReturn;
+
   final _controller = Get.put(CheckboxController());
+
+  CustomCheckbox({Key? key, required this.valueReturn}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Obx(() => Checkbox(
@@ -28,7 +25,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         value: _controller.value.value,
         onChanged: (bool? newValue) {
           _controller.value.value = newValue!;
-          widget.valueReturn(newValue);
+          valueReturn(newValue);
         }));
   }
 }

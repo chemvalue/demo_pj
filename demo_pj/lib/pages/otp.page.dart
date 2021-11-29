@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:demo_pj/constant.dart';
 
 class OtpPage extends StatelessWidget {
-  String otp = '';
+  var otp = '';
   final String phoneNumber;
   final otpController = Get.put(OtpController());
 
@@ -18,7 +18,17 @@ class OtpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Get.back();
+            },
+          )),
+      body: SizedBox(
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +38,7 @@ class OtpPage extends StatelessWidget {
               'Xác nhận OTP',
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
@@ -51,7 +61,7 @@ class OtpPage extends StatelessWidget {
                       OtpInput(
                           onChange: (String value) {
                             otp = value;
-                            if(6 == value.length){
+                            if (6 == value.length) {
                               otpController.correct();
                             }
                           },
@@ -64,10 +74,11 @@ class OtpPage extends StatelessWidget {
                             ? null
                             : const Text(
                                 'Nhập sai dữ liệu, vui lòng nhập lại',
-                                style: TextStyle(fontSize: 10, color: Colors.red),
+                                style:
+                                    TextStyle(fontSize: 10, color: Colors.red),
                               ),
                       ),
-                      customButton(
+                      CustomButton(
                         check: otpController.check.value,
                         color: cPRIMARY_BUTTON_COLOR,
                         text: 'Xác nhận',
@@ -75,7 +86,7 @@ class OtpPage extends StatelessWidget {
                           if (cOTP == otp) {
                             otpController.correct();
                             Get.back();
-                            Get.to(const HomePage());
+                            Get.to(() => const HomePage());
                           } else {
                             otpController.wrong();
                           }
@@ -87,11 +98,12 @@ class OtpPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Get.defaultDialog(
-                            contentPadding:
-                            const EdgeInsets.only(top: 10, bottom: 20, left: 20, right: 20),
+                            contentPadding: const EdgeInsets.only(
+                                top: 10, bottom: 20, left: 20, right: 20),
                             titlePadding: const EdgeInsets.only(top: 20),
                             title: 'Thao tác thành công',
-                            titleStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                            titleStyle: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500),
                             content: Container(
                               margin: const EdgeInsets.only(bottom: 20),
                               child: const Text(
@@ -118,6 +130,11 @@ class OtpPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            // barrierDismissible: false,
+                            onWillPop: () async {
+                              otpController.correct();
+                              return true;
+                            },
                           );
                         },
                         child: Container(
@@ -125,13 +142,17 @@ class OtpPage extends StatelessWidget {
                             bottom: 1, // Space between underline and text
                           ),
                           decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(
-                                color: Colors.grey,
-                                width: 1.sp, // Underline thickness
-                              ))
-                          ),
+                              border: Border(
+                                  bottom: BorderSide(
+                            color: Colors.grey,
+                            width: 1.sp, // Underline thickness
+                          ))),
                           child: const Text(
-                            'Gửi lại OTP', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.grey),
+                            'Gửi lại OTP',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey),
                           ),
                         ),
                       )

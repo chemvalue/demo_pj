@@ -12,7 +12,7 @@ class StoreAddressController extends GetxController {
   var townId = 0.obs;
   var distributorId = 0.obs;
   var check = false.obs;
-  var isImagePicked = false.obs;
+  var imagePath = ''.obs;
   var address = ''.obs;
 
   void signInAccount({

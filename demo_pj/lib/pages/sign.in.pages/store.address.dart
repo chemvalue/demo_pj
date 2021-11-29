@@ -1,64 +1,31 @@
-import 'dart:io';
 import 'package:demo_pj/controller/store.address.controller.dart';
-import 'package:demo_pj/resources/utilities.dart';
 import 'package:demo_pj/resources/widgets/button.dart';
 import 'package:demo_pj/resources/widgets/checkbox.dart';
 import 'package:demo_pj/resources/widgets/dropdown.list.dart';
+import 'package:demo_pj/resources/widgets/image.view.dart';
 import 'package:demo_pj/resources/widgets/input.field.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 import '../../constant.dart';
 
-class SignInStoreAddressPage extends StatefulWidget {
-  const SignInStoreAddressPage(
-      {Key? key, required this.name, required this.phone})
-      : super(key: key);
-
+class SignInStoreAddressPage extends StatelessWidget {
   final String name;
   final String phone;
 
-  @override
-  _SignInStoreAddressPageState createState() => _SignInStoreAddressPageState();
-}
+  SignInStoreAddressPage({Key? key, required this.name, required this.phone})
+      : super(key: key);
 
-class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
   final addressController = Get.put(StoreAddressController());
+
   var city = '', district = '', town = '', distributor = '';
-  File? imageFile;
 
-  _getFromGallery() async {
-    XFile? pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      // chua cap nhat duoc thong qua getx
-      setState(() {
-        imageFile = File(pickedFile.path);
-      });
-    }
-  }
-
-  _getFromCamera() async {
-    XFile? pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      // chua cap nhat duoc thong qua getx
-      setState(() {
-        imageFile = File(pickedFile.path);
-      });
-    }
-  }
-
-  dynamic _handleCheckValue(bool value) {
+  _handleCheckValue(bool value) {
     addressController.check.value = value;
+  }
+
+  _handleImagePath(String value) {
+    addressController.imagePath.value = value;
   }
 
   _handleCityValue(int value) {
@@ -132,6 +99,17 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // extendBodyBehindAppBar: true,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: BackButton(
+      //     color: Colors.black,
+      //     onPressed: () {
+      //       Get.back();
+      //     },
+      //   )
+      // ),
       body: SingleChildScrollView(
         child: SizedBox(
           child: Column(
@@ -198,7 +176,7 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
                         SizedBox(
                           height: 10.h,
                         ),
-                        inputWidget(
+                        CustomTextField(
                             hint: 'Địa chỉ cụ thể',
                             isPhone: false,
                             onChange: (String value) {
@@ -232,173 +210,10 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
                           style: TextStyle(
                               fontSize: 16.sp, fontWeight: FontWeight.w400),
                         ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          child: imageFile == null
-                              ? DottedBorder(
-                                  borderType: BorderType.Rect,
-                                  dashPattern: const [3, 3],
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.defaultDialog(
-                                          contentPadding: const EdgeInsets.only(
-                                              top: 10,
-                                              bottom: 20,
-                                              left: 20,
-                                              right: 20),
-                                          titlePadding:
-                                              const EdgeInsets.only(top: 20),
-                                          title: 'Ảnh',
-                                          titleStyle: const TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500),
-                                          content: Column(
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Get.back();
-                                                  _getFromCamera();
-                                                },
-                                                child: Container(
-                                                  alignment: Alignment.center,
-                                                  width: 200.w,
-                                                  height: 40.h,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                    color: getColorFromHex(
-                                                        cPRIMARY_BUTTON_COLOR),
-                                                  ),
-                                                  child: const Text(
-                                                    'Chụp ảnh mới',
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Get.back();
-                                                  _getFromGallery();
-                                                },
-                                                child: Container(
-                                                  alignment: Alignment.center,
-                                                  width: 200.w,
-                                                  height: 40.h,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                    color: getColorFromHex(
-                                                        cPRIMARY_BUTTON_COLOR),
-                                                  ),
-                                                  child: const Text(
-                                                    'Mở thư viện ảnh',
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ));
-                                    },
-                                    child: SizedBox(
-                                      height: 120,
-                                      width: 120,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          Icon(
-                                            Icons.photo,
-                                            size: 80,
-                                          ),
-                                          Text('Thêm ảnh')
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : GestureDetector(
-                                  onTap: () {
-                                    Get.defaultDialog(
-                                        contentPadding: const EdgeInsets.only(
-                                            top: 10,
-                                            bottom: 20,
-                                            left: 20,
-                                            right: 20),
-                                        titlePadding:
-                                            const EdgeInsets.only(top: 20),
-                                        title: 'Ảnh',
-                                        titleStyle: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500),
-                                        content: Column(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                Get.back();
-                                                _getFromCamera();
-                                              },
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                width: 200.w,
-                                                height: 40.h,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: getColorFromHex(
-                                                      cPRIMARY_BUTTON_COLOR),
-                                                ),
-                                                child: const Text(
-                                                  'Chụp ảnh mới',
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                Get.back();
-                                                _getFromGallery();
-                                              },
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                width: 200.w,
-                                                height: 40.h,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: getColorFromHex(
-                                                      cPRIMARY_BUTTON_COLOR),
-                                                ),
-                                                child: const Text(
-                                                  'Mở thư viện ảnh',
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ));
-                                  },
-                                  child: SizedBox(
-                                    height: 120,
-                                    width: 120,
-                                    child: Image.file(
-                                      imageFile!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                        ),
+                        // CustomImage(
+                        //   valueReturn: _handleImagePath,
+                        // ),
+                        CustomImage(valueReturn: _handleImagePath),
                         const Divider(
                           color: Colors.black,
                         ),
@@ -431,19 +246,22 @@ class _SignInStoreAddressPageState extends State<SignInStoreAddressPage> {
                             )
                           ],
                         ),
-                        customButton(
+                        CustomButton(
                             color: cPRIMARY_BUTTON_COLOR,
                             text: 'Đăng ký',
                             function: () async {
                               addressController.signInAccount(
-                                  name: widget.name,
-                                  phone: widget.phone,
+                                  name: name,
+                                  phone: phone,
                                   city: city,
                                   district: district,
                                   town: town,
                                   home: addressController.address.value,
                                   distributor: distributor,
-                                  imagePath: imageFile?.path);
+                                  imagePath:
+                                      addressController.imagePath.value.isEmpty
+                                          ? null
+                                          : addressController.imagePath.value);
                             }),
                       ],
                     )),

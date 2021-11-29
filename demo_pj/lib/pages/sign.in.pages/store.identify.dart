@@ -54,7 +54,7 @@ class StoreIdentifyPage extends StatelessWidget {
                     SizedBox(
                       height: 10.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập tên cửa hàng',
                         isPhone: false,
                         onChange: (String value) {
@@ -69,7 +69,7 @@ class StoreIdentifyPage extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    inputWidget(
+                    CustomTextField(
                         hint: 'Nhập số điện thoại',
                         isPhone: true,
                         onChange: (String value) {
@@ -84,7 +84,7 @@ class StoreIdentifyPage extends StatelessWidget {
                     SizedBox(
                       height: 30.h,
                     ),
-                    customButton(
+                    CustomButton(
                         color: cPRIMARY_BUTTON_COLOR,
                         text: 'Tiếp tục',
                         function: () => storeIdentify.confirmInfo(
