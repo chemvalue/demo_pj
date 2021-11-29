@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
 
 bool phoneCheck(String phone) {
-  print(RegExp(cPHONE_VALIDATE).hasMatch(phone));
   return RegExp(cPHONE_VALIDATE).hasMatch(phone);
 }
 

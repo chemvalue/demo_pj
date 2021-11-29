@@ -8,8 +8,17 @@ class StoreIdentifyController extends GetxController{
   void confirmInfo({required String name, required String phone}){
     if (name.trim().isNotEmpty && phoneCheck(phone)) {
       Get.to(() => SignInStoreAddressPage(name: name, phone: phone,));
+      return;
     } else{
-      Get.snackbar('Lỗi', 'Mời nhập lại thông tin đăng ký');
+
+    }
+    if(name.trim().isEmpty){
+      Get.snackbar('Lỗi', 'Mời nhập tên cửa hàng');
+      return;
+    }
+    if(!phoneCheck(phone)){
+      Get.snackbar('Lỗi', 'Mời nhập lại số điện thoại');
+      return;
     }
   }
 }
